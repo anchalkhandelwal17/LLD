@@ -32,6 +32,67 @@ public class Game {
 
         while(gameState == GameState.IN_PROGRESS){
 
+            board.printBoard();
+
+            // Get current player
+            Player currentPlayer = players.poll();
+            System.out.println(currentPlayer.getPlayer() + "'s turn");
+
+            System.out.println("Enter row:");
+
+            int row = sc.nextInt();
+
+            System.out.println("Enter col: ");
+
+            int col = sc.nextInt();
+
+            Move move = new Move(currentPlayer, row, col);
+
+            if(!board.isValidMove(row, col)){
+                System.out.println("Invalid Move: Try Again.");
+
+                // put players back to queue
+                players.offer(currentPlayer);
+
+                continue;
+            }
+
+            // Now place move
+            board.placeMove(row, col, currentPlayer.getSymbol());
+            moves.add(move);
+
+            totalMoves++;
+
+            if(checkWinner(move)){
+                board.printBoard();
+
+                System.out.println(currentPlayer.getPlayer() + " Won the game!");
+
+                gameState = GameState.ENDED;
+
+                return;
+            }
+
+            if (movesPlayed == totalMoves){
+
+                board.printBoard();
+
+                System.out.println("Game Drawn");
+                gameState = GameState.DRAW;
+                return;
+            }
+
+            // Rotate turn
+            players.offer(currentPlayer);
         }
+
+    }
+    private boolean checkWinner(Move move){
+        for(WinningStrategy strategy : strategies){
+            if(strategy.checkWinner(board, move)){
+                return true;
+            }
+        }
+        return false;
     }
 }
