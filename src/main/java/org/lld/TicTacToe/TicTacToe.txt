@@ -1,0 +1,35 @@
+
+Tic Tac Toe -
+
+Req-
+There will be a board
+And it can be a 3*3 board or maybe n*n
+
+For simplicity the allowed values/moves on every cell will be either 'X' or 'O', maybe in future we could
+add other symbols as well to be used
+
+For now we will be having 2 players to play the game, in future it can be extended to multiple players
+playing simultaneously on n*n board
+
+Before the start of the game a player will choose either 'X' or 'O' to use
+Then we can have kind of toss who will make the first move
+Or we can start with player using 'X' for first move for simplicity
+
+when a player chooses a move we have to check multiple conditions before finally placing that move on the
+board -
+        - Is the chosen move within the bounds?
+        - Is the cell empty or does it already contains a symbol?
+        - If it is empty, then after placing every symbol
+        - we have to call checkWinner()
+        - If the player won, we can immediately stop the game there and declare the player as winner
+
+Our game will run till noOfMoves <= n*n or 3*3
+if during the gamePlay no one was declared winner, and we came out of the loop
+then we can return Game drawn
+
+Key entities here will be -
+Game, Board, Player, Symbols('X', 'Y'), Cell, currentState of the game after every valid move,
+winningCondition -> that Complete row on which the move was made or column or diagonals,
+
+
+
