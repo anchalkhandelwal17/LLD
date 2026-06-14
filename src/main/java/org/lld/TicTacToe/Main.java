@@ -1,6 +1,4 @@
-package org.lld;
-
-import org.lld.TicTacToe.*;
+package org.lld.TicTacToe;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
