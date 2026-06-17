@@ -1,0 +1,36 @@
+
+Game Requirements Analysis -
+
+In snake and food game we have a snake eating food items and moves only in the grid
+The food items can be placed at random places in the grid
+Or we always have only a single food item in the grid and as soon as snake eats it
+A new food item pops up at random index in the grid
+And as soon as snake eats the food its length increases by 1
+we could move U, D, L, R
+we can have a score counter as well to track the total score
+
+we can have two game states -
+ACTIVE, GAME OVER
+
+In the active state the game keeps on going, and as soon as the snake collides with itself or boundary
+we can change game state to game over and show the total score to the player
+It will only be a single player game
+
+The game over conditions can be either snake collides with itself or it collides with the
+grid boundary
+
+key entities would be -
+Snake, Food, Board, Cell, Game
+
+Design patterns that can be used -
+we could have food items of different types
+normal, bonus, poision
+  1      2       -1
+
+and can effectively use factory design pattern here to generate food of different types
+
+strategy can be used for movement strategies
+
+
+
+
