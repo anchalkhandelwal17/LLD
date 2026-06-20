@@ -1,0 +1,22 @@
+
+Parking Lot LLD
+
+Core Requirements -
+
+A parking lot has multiple parking slots and can be of different types as well
+- Car Parking Slot, Bike Parking Slot, Taxi Parking Slot, etc.
+
+Parking lot will manage the parking slots
+
+Allows for parking of vehicles of different types - CAR, BIKE, TAXI
+
+Charges the money for the vehicle parked, when the vehicle entered the parking or
+maybe when it is exiting the parking
+
+Supports different payment channels
+
+Can have dynamic pricing strategy as well for the duration of the vehicle parked
+
+Core Entities can be -
+Parking lot, Parking slots, Vehicle
+Different payment modes, dynamic pricing strategy

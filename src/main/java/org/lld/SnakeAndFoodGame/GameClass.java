@@ -219,24 +219,26 @@ class PoisonFood extends Food {
 class FoodFactory {
 
     public static Food createFood(String food){
-        FoodType foodType;
-        switch (food.toUpperCase()) {
-            case NORMAL -> {
-                return new NormalFood();
-            }
+//        FoodType foodType;
+//        switch (food.toUpperCase()) {
+//            case NORMAL -> {
+//                return new NormalFood();
+//            }
+//
+//            case SPECIAL -> {
+//                return new SpecialFood();
+//            }
+//
+//            case POISON -> {
+//                return new PoisonFood();
+//            }
 
-            case SPECIAL -> {
-                return new SpecialFood();
-            }
+//            default -> throw new IllegalArgumentException("Please give valid food type");
 
-            case POISON -> {
-                return new PoisonFood();
-            }
 
-            default -> throw new IllegalArgumentException("Please give valid food type");
+        return null;
         }
     }
-}
 
 enum FoodType {
 
