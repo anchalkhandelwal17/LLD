@@ -1,0 +1,32 @@
+
+Elevator System -
+
+Core requirements-
+
+In elevator system we have multiple elevators, inside the building catering multiple floors.
+Elevator can go up/down
+
+person can request for an elevator by pressing the button
+
+the outside button have 2 directions -
+UP -> if a person wants to go up then up button will be pressed
+DOWN -> if a person wants to go down then down button will be pressed
+
+the request can be categorized into two categories -
+Internal request -> when a person is already inside the elevator and presses the button to go
+on a destination floor
+External request -> when a person presses the button from some floor to go UP/DOWN
+
+we have doors as well
+doors can open/close
+
+there is display board as well outside the elevator which displays on which floor the
+elevator is currently
+
+to maintain a list of elevators and assign elevators optimally for the request we can have
+elevatorController
+
+Core entities can be -
+Building, Floor, Elevator, elevatorController, Door, Display,
+Request - Internal/External
+Button - Internal/External
