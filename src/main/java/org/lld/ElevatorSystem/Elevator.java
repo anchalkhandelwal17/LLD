@@ -1,19 +1,24 @@
 package org.lld.ElevatorSystem;
 
+import org.lld.ElevatorSystem.Observer.ElevatorObserver;
+import org.lld.ElevatorSystem.Observer.ElevatorSubject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class Elevator {
+public class Elevator implements ElevatorSubject {
     // each elevator will have requests -> internal
     // each elevator will have door as well
     private int id;
     private int currentFloor;
 //    private List<InternalButton> internalButtons;
+    private final List<ElevatorObserver> elevatorObservers = new ArrayList<>();
     private InternalButton internalButton;
     private Door door;
 //    private List<InternalRequest> requests;
     private Direction direction;
+    private Display display;
     private ElevatorState elevatorState;
     private PriorityQueue<InternalRequest> upRequest;   // min-heap
     private PriorityQueue<InternalRequest> downRequest;  // max-heap
@@ -27,6 +32,7 @@ public class Elevator {
         this.elevatorState = ElevatorState.IDLE;
         this.upRequest = new PriorityQueue<>((a, b) -> Integer.compare(a.getDestFloor(), b.getDestFloor()));
         this.downRequest = new PriorityQueue<>((a, b) -> Integer.compare(b.getDestFloor(), a.getDestFloor()));
+        this.display = new Display();
     }
 
     public PriorityQueue<InternalRequest> getUpRequest() {
@@ -70,6 +76,10 @@ public class Elevator {
     }
 
     public void addNewRequest(InternalRequest request){
+
+        if(elevatorState == ElevatorState.MAINTENANCE){
+            return;
+        }
         if(request.getDestFloor() > currentFloor){
             upRequest.add(request);
         }
@@ -99,23 +109,28 @@ public class Elevator {
     private void goToFloor(int destinationFloor){
 
         direction = destinationFloor > currentFloor ? Direction.UP : Direction.DOWN;
-
+        System.out.println("Moving to floor " + destinationFloor);
         while (currentFloor != destinationFloor){
 
             if(currentFloor < destinationFloor){
                 currentFloor++;
+
+                notifyObserver();
             }
             else{
                 currentFloor--;
+
+                notifyObserver();
             }
 
-            System.out.println("Current Floor: " + currentFloor);
+//            System.out.println("Current Floor: " + currentFloor);
+//            display.show(currentFloor, direction);
         }
 
         stop();
-        System.out.println("Reached at floor " + destinationFloor + " opening door..");
+        System.out.println("Reached at floor " + destinationFloor + "  ------> opening door..");
         openDoor();
-        System.out.println("closing door");
+        System.out.println("closing door!");
         closeDoor();
     }
 
@@ -180,5 +195,24 @@ public class Elevator {
         }
 
         elevatorState = ElevatorState.IDLE;
+    }
+
+    @Override
+    public void registerObserver(ElevatorObserver observer) {
+        elevatorObservers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(ElevatorObserver observer) {
+        elevatorObservers.remove(observer);
+    }
+
+    @Override
+    public void notifyObserver() {
+
+        for(ElevatorObserver observer : elevatorObservers){
+
+            observer.update(currentFloor, direction);
+        }
     }
 }

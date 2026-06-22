@@ -1,7 +1,7 @@
 package org.lld.ElevatorSystem;
 
 public class Door {
-    private DoorState doorState;
+    private DoorState doorState = DoorState.CLOSE;
 
     public void open(){
         this.doorState = DoorState.OPEN;
