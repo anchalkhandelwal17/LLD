@@ -1,0 +1,21 @@
+
+Inventory Management System -
+
+core requirements-
+
+In Inventory System an inventory is used to store products, add products, remove products,
+maintain a list of products, get a specific product by id, notify supplier for stock refill.
+
+it is used to store different types of products as well -
+Electronics, Grocery, Clothes, etc.
+
+we have different stock replenishment strategies as well
+ex - bulkReplenishmentStrategy, stockGoesBelowThresholdReplenishment
+
+we can use make use of factory pattern to create different types of products
+
+core entities-
+
+Inventory, Product, Supplier
+ReplenishmentStrategies, Factory for product creation.
+
