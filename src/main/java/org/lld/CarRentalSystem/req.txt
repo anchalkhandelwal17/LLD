@@ -1,0 +1,18 @@
+
+Car Rental System LLD -
+
+Requirements -
+A Car rental system allows to rent cars for a specific duration
+It allows to createBooking, cancelBooking, completeBooking
+It maintains a list of cars and out of which available cars can be booked
+We also have a bookingManager which controls the entire booking flow
+- createBooking, cancelBooking, removeBooking, etc.
+once the customer returns the rented vehicle we can proceed with payment
+- and for that we can have different payment strategies as well as pricing strategies
+- factory pattern can be used here to create vehicles although not required, but still...
+a vehicle can have different statuses - AVAILABLE, BOOKED, RESERVED, etc.
+similarly we can also have different BookingStatus - CONFIRMED, COMPLETED, etc.
+
+
+Core entities in the system can be -
+RentalStore, BookingManager, Vehicle, Customer, Booking, PaymentStrategies, PricingStrategies
