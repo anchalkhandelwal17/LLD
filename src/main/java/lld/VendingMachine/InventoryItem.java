@@ -27,6 +27,8 @@ public class InventoryItem {
     }
 
     public void decreaseStock(int quantity){
+        if(this.quantity < quantity)
+            throw new IllegalStateException();
         this.quantity -= quantity;
     }
 }

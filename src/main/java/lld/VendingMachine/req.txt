@@ -1,0 +1,22 @@
+
+Vending Machine Requirements -
+
+Core req -
+
+VendingMachine accepts the payment, then customer selects the item, then it dispenses it.
+And in between all of this customer can cancel the transaction at any time before the machine is
+already in dispensing state.
+
+Modern vending machines accepts payment via different forms - Cash, UPI, Coin, etc.
+for this Different PaymentStrategies can be created
+
+We can architecture vending machine like - VM having different racks and each rack contains Items
+of let's say same category
+
+Also the main part vending machine goes through different states like -
+Idle, itemSelected, itemDispensing, cancelTransaction, etc. states
+for this State pattern can be used here
+
+Core entities in the system will be -
+VendingMachine, Rack, InventoryItem
+Different Payment Strategies and obviously different states

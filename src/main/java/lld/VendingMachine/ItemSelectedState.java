@@ -1,25 +1,27 @@
 package lld.VendingMachine;
 
-public class ItemSelectedState implements State{
+public class ItemSelectedState implements State {
+
     @Override
-    public void insertMoney(VendingMachine vendingMachine) {
+    public void insertMoney(VendingMachine vendingMachine, int amount, PaymentStrategy paymentStrategy) {
 
     }
 
     @Override
-    public void selectItem(VendingMachine vendingMachine) {
-        int change = vendingMachine.getSelectedItem().getAmount() - vendingMachine.getInsertedAmount();
+    public void selectItem(VendingMachine vendingMachine, String rackId) {
 
-        if(change < 0){
-            vendingMachine.setVendingMachineState(new IdleState());
-            return;
+    }
+
+    @Override
+    public void dispenseItem(VendingMachine vendingMachine) {
+        Item item = vendingMachine.getSelectedItem();
+
+        if (vendingMachine.getInsertedAmount() < item.getAmount()) {
+            throw new IllegalStateException("Insufficient Balance");
         }
-        vendingMachine.setVendingMachineState(new DispensingState());
-    }
 
-    @Override
-    public Item dispenseItem(VendingMachine vendingMachine) {
-        return null;
+        vendingMachine.setVendingMachineState(new DispensingState());
+        vendingMachine.dispenseItem();
     }
 
     @Override
