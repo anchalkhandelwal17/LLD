@@ -8,7 +8,6 @@ public class Rack {
         this.rackId = rackId;
     }
 
-
     public void setInventoryItem(InventoryItem inventoryItem) {
         this.inventoryItem = inventoryItem;
     }
