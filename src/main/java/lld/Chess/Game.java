@@ -1,11 +1,12 @@
 package lld.Chess;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Game {
     Board board;
-    Player whitePlayer;
-    Player blackPlayer;
+    Queue<Player> players = new LinkedList<>();
     Player currentPlayer;
     GameStatus gameStatus;
     List<Move> moves;

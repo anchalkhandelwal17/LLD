@@ -28,7 +28,7 @@ if during the gamePlay no one was declared winner, and we came out of the loop
 then we can return Game drawn
 
 Key entities here will be -
-Game, Board, Player, Symbols('X', 'Y'), Cell, currentState of the game after every valid move,
+Game, Board, Player, Symbols('X', 'O'), Cell, currentState of the game after every valid move,
 winningCondition -> that Complete row on which the move was made or column or diagonals,
 
 

@@ -1,10 +1,12 @@
 package lld.Chess;
 
 import lld.Chess.Pieces.King;
+import lld.Chess.factory.PieceFactory;
 
 public class Board {
-    private static int size = 8;
+    private static final int size = 8;
     private Cell[][] cells;
+    private PieceFactory pieceFactory;
     public Board(){
         initializeBoard();
     }
@@ -22,29 +24,29 @@ public class Board {
     }
 
     private void setUpPieces(){
-        placePiece(new King(Color.WHITE), 7, 4);
-        placePiece(new King(Color.BLACK), 0, 4);
 
+        placePiece(pieceFactory.createPiece(PieceType.KING, Color.WHITE), new Position(0, 3));
+        placePiece(pieceFactory.createPiece(PieceType.KING, Color.BLACK), new Position(7, 4));
         // similarly place other pieces
     }
 
-    public Cell getCell(int row, int col){
-        return cells[row][col];
+    public Cell getCell(Position position){
+        return cells[position.getRow()][position.getCol()];
     }
 
-    public Piece getPiece(int row, int col){
-        return cells[row][col].getPiece();
+    public Piece getPiece(Position position){
+        return cells[position.getRow()][position.getCol()].getPiece();
     }
 
     public void movePiece(Move move){
         // moving the piece logic
     }
 
-    public boolean isCellEmpty(int row, int col){
-        return cells[row][col].getPiece() == null;
+    public boolean isCellEmpty(Position position){
+        return cells[position.getRow()][position.getCol()].getPiece() == null;
     }
 
-    public void placePiece(Piece piece, int row, int col){
-       cells[row][col].setPiece(piece);
+    public void placePiece(Piece piece, Position position){
+       cells[position.getRow()][position.getCol()].setPiece(piece);
     }
 }

@@ -1,5 +1,5 @@
 package lld.Chess;
 
 public interface MoveStrategy {
-    boolean canMove(Board board, Cell source, Cell destination);
+    boolean canMove(Board board, Move move);
 }

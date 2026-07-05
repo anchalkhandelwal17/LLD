@@ -15,6 +15,8 @@ public class Main {
         player1.setPlayer("Player 1");
         Player player2 = new Player();
         player2.setPlayer("Player 2");
+        player1.setSymbol(Symbol.X);
+        player2.setSymbol(Symbol.O);
         Queue<Player> players = new LinkedList<>();
         players.add(player1);
         players.add(player2);

@@ -4,13 +4,14 @@ public abstract class Piece {
     private boolean isKilled = false;
     private MoveStrategy moveStrategy;
     protected Color color;
+    protected boolean hasMoved;
 
     public Piece(Color color, MoveStrategy moveStrategy){
         this.color = color;
         this.moveStrategy = moveStrategy;
     }
-    public boolean canMove(Board board, Cell source, Cell destination){
-        return moveStrategy.canMove(board, source, destination);
+    public boolean canMove(Board board, Move move){
+        return moveStrategy.canMove(board, move);
     }
 
     public boolean isKilled() {

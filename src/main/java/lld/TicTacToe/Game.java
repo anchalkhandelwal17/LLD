@@ -61,7 +61,7 @@ public class Game {
             board.placeMove(row, col, currentPlayer.getSymbol());
             moves.add(move);
 
-            totalMoves++;
+            movesPlayed++;
 
             if(checkWinner(move)){
                 board.printBoard();
