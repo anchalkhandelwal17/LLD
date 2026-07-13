@@ -1,7 +1,7 @@
 package lld.CarRentalSystem;
 
 // Created a Vehicle class to make it extensible to use bike, taxi, etc. along with cars
-public abstract class Vehicle {
+public abstract class  Vehicle {
     // vehicleNo, vehicleColor, brandName, isAvailable
     protected String vehicleNo;
     protected String vehicleColor;

@@ -34,7 +34,7 @@ public class RentalStore {
         return availableVehicles;
     }
 
-    public String  bookVehicle(String vehicleNo, LocalDate fromDate, LocalDate toDate, Customer customer){
+    public String bookVehicle(String vehicleNo, LocalDate fromDate, LocalDate toDate, Customer customer){
          Vehicle vehicle = allVehicles.get(vehicleNo);
          Booking booking = bookingManager.createBooking(fromDate, toDate, customer, vehicle);
          return booking.getBookingId();
