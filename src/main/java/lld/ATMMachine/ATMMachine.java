@@ -4,7 +4,7 @@ public class ATMMachine {
 
     private State state;
     private BankService bankService;
-    // insertCard, selectOption, cancelTransaction
+    private CashInventory cashInventory;
 
     public ATMMachine(){
        this.state = new IdleState();
